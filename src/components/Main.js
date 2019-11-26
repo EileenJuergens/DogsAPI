@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { fetchDogs } from '../Services/ApiClient';
 import Dog from './Dog';
 const uuidv1 = require('uuid/v1');
 // import { connect } from 'react-redux';
@@ -10,12 +10,12 @@ const Main = () => {
   const [ dogs, setDogs ] = useState([]); 
   
   useEffect(() => {
-    axios
-      .get('https://dog.ceo/api/breeds/list/all')
-      .then(response => {
-        setDogs(response.data.message)
-      })
-  }, [])
+    async function retrieveDogs () {
+      let data = await fetchDogs()
+      setDogs(data.message)
+    }
+    retrieveDogs()
+  }, [dogs])
 
   const rows = () => {
     return Object.keys(dogs).map(dog => 
