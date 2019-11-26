@@ -1,13 +1,14 @@
 import React from 'react';
+import Main from './components/Main';
 
 
-function App() {
+const App = () => {
   return (
     <div >
-        <h1>Test</h1>  
+      <h1>All cute dogs</h1> 
+      <Main/> 
     </div>
   );
 }
-
 
 export default App;
