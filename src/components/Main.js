@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { fetchDogs } from '../Services/ApiClient';
+import { connect } from 'react-redux';
+import { setDogs } from '../actions';
 import Dog from './Dog';
 const uuidv1 = require('uuid/v1');
-// import { connect } from 'react-redux';
-// import { setDogs } from '../actions';
-// import ApiClient from '../Services/ApiClient';
 
-const Main = () => {
-  const [ dogs, setDogs ] = useState([]); 
+
+const Main = ({ dogList, setDogs }) => {
   
   useEffect(() => {
     async function retrieveDogs () {
@@ -15,10 +14,10 @@ const Main = () => {
       setDogs(data.message)
     }
     retrieveDogs()
-  }, [dogs])
+  },[])
 
   const rows = () => {
-    return Object.keys(dogs).map(dog => 
+    return Object.keys(dogList).map(dog => 
       <Dog key={uuidv1()} dog={dog}/>)  
   }
   
@@ -29,12 +28,11 @@ const Main = () => {
   )
 };
 
-// const mapStateToProps = state => ({
-//   dogList: state.dogList
-// });
-// const mapDispatchToProps = dispatch => ({
-//   setDogs: (dogList) => dispatch(setDogs(dogList))
-// });
+const mapStateToProps = state => ({
+  dogList: state.dogList
+});
+const mapDispatchToProps = dispatch => ({
+  setDogs: (dogList) => dispatch(setDogs(dogList))
+});
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Main);
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
