@@ -1,10 +1,18 @@
-const BASE_URL = 'https://dog.ceo/api/breeds/list/all'
+const BASE_URL = 'https://dog.ceo/api';
 
-export const fetchDogs = () => {
-  return fetch(BASE_URL)
-    .then(res => res.status <= 400 ? res : Promise.reject(res))
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(`${err.message} while fetching`)
-    });
-};
+const getDogsService = async () => {
+  const response = await fetch(`${BASE_URL}/breeds/list/all`)
+  if (response.ok) return response.json();
+  throw new Error('Sorry, something went wrong while request the dogs API.');
+}
+
+const getDogsImagesService = async breedName => {
+  const response = await fetch(`${BASE_URL}/breed/${breedName}/images`)
+  if (response.ok) return response.json();
+  throw new Error(`Sorry, something went wrong while request the images of the breed ${breedName}.`);
+}
+
+export  {
+  getDogsService,
+  getDogsImagesService
+}

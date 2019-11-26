@@ -1,38 +1,43 @@
 import React, { useEffect } from 'react';
-import { fetchDogs } from '../Services/ApiClient';
+import { getDogs } from '../Redux/actions';
 import { connect } from 'react-redux';
-import { setDogs } from '../actions';
-import Dog from './Dog';
-const uuidv1 = require('uuid/v1');
+import { getDogsService, getDogsImagesService } from '../Services/ApiClient';
 
+const Main = ({ dogList, dispatchGetDogs }) => {
 
-const Main = ({ dogList, setDogs }) => {
-  
   useEffect(() => {
-    async function retrieveDogs () {
-      let data = await fetchDogs()
-      setDogs(data.message)
-    }
-    retrieveDogs()
-  },[])
-
-  const rows = () => {
-    return Object.keys(dogList).map(dog => 
-      <Dog key={uuidv1()} dog={dog}/>)  
-  }
+    getDogsService()
+      .then(response => {
+        const breedNames = Object.keys(response.message)
+        breedNames.forEach(breedName => {
+          getDogsImagesService(breedName)
+            .then(imagesResponse => {
+              const data = {breedName, amountOfImages: imagesResponse.message.length}
+              dispatchGetDogs(data)
+            })
+            .catch(error => {
+              alert(error);
+            });
+        });
+      })
+      .catch(error => {
+        alert(error);
+      });
+  },[]);
   
   return (
     <div>
-      {rows()}
+      <button onClick={() => {console.log(dogList)}}>TEST</button>
     </div>
   )
 };
 
 const mapStateToProps = state => ({
-  dogList: state.dogList
+  dogList: state.dogsReducer
 });
+
 const mapDispatchToProps = dispatch => ({
-  setDogs: (dogList) => dispatch(setDogs(dogList))
+  dispatchGetDogs: data => dispatch(getDogs(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
