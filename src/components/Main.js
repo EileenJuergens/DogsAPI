@@ -28,7 +28,7 @@ const Main = ({ dogList, amountOfImages, dispatchGetDogs, dispatchgetAmountOfIma
       <h1>The ten breeds with the most uploaded images</h1> 
       <PieChart data={dogList} amountOfImages={amountOfImages} />
       <br/>
-      <p>The number while hover over a part in the pie chart is the percentage of images that were uploaded for this breed measured on the total amount of images from all breeds.</p>
+      <p>The number while hover over a part in the pie chart is the percentage of images that were uploaded for this breed measured on the total amount of images ({amountOfImages}) from all breeds.</p>
     </div>
   );
 };

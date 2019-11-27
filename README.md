@@ -8,7 +8,7 @@
   - [4.2. Prospects](#42-prospects)
 - [5. Developer](#5-Developer)
   - [5.1. Contact](#51-Contact)
-  - [5.2. Favorite Dogs](#52-favorite-dogs)
+  - [5.2. My favorite dogs](#52-my-favorite-dogs)
 
 ## 1. Getting started
 Fork this repo and then `git clone` your forked repo to your computer. Run `npm install` in the root directory. Run the app in the development mode with `npm start` in the root directory, this will open [http://localhost:3000](http://localhost:3000) to view the app in the browser.
@@ -48,7 +48,7 @@ Another functionality that I would like to implement is a search bar, where I ca
 ### 5.1. Contact
 Eileen Jürgens - [GitHub](https://github.com/EileenJuergens) - [LinkedIn](https://www.linkedin.com/in/eileen-jürgens-462595154/) 
 
-### 5.2. Favorite Dogs
+### 5.2. My favorite dogs
 <p align='center'>
   <img width='200' src='./src/assets/australianShepherd.jpg'/>
   <img width='200' src='./src/assets/dalmatian.jpg'/>
