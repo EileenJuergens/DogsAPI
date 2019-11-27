@@ -4,3 +4,10 @@ export const getDogs = data  => {
     data
   }
 }
+
+export const getAmountOfImages = data => {
+  return {
+    type: 'GET_AMOUNT_OF_IMAGES',
+    data
+  }
+}

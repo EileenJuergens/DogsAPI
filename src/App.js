@@ -3,8 +3,7 @@ import Main from './components/Main';
 
 const App = () => {
   return (
-    <div >
-      <h1>All cute dogs</h1> 
+    <div>
       <Main/> 
     </div>
   );

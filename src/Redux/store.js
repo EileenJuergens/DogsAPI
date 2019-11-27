@@ -1,9 +1,10 @@
 
 import { createStore, combineReducers } from 'redux';
-import { dogsReducer } from './reducers'
+import { dogsReducer, amountOfImagesReducer } from './reducers'
 
 const reducers = combineReducers({
-  dogsReducer
+  dogsReducer, 
+  amountOfImagesReducer
 });
 
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ &&
