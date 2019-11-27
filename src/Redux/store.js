@@ -1,6 +1,6 @@
 
 import { createStore, combineReducers } from 'redux';
-import { dogsReducer, amountOfImagesReducer } from './reducers'
+import { dogsReducer, amountOfImagesReducer } from './reducers';
 
 const reducers = combineReducers({
   dogsReducer, 

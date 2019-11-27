@@ -1,6 +1,7 @@
 import React from 'react';
-import {Pie} from 'react-chartjs-2';
-import Loader from 'react-loader-spinner'
+import { Pie } from 'react-chartjs-2';
+import Loader from 'react-loader-spinner';
+
 const colors = [
   '#001f3f',
   '#0074D9',
@@ -14,24 +15,23 @@ const colors = [
   '#85144b'
 ];
 
-const PieChart = ({data, amountOfImages}) => {
+const PieChart = ({ data, amountOfImages }) => {
   if (data.length) {
     const sortedData = [...data].sort((a, b) => {
-      return b.amountOfImages - a.amountOfImages
-    }).slice(0, 10)
+      return b.amountOfImages - a.amountOfImages;
+    }).slice(0, 10);
     const pieData = {
       labels: sortedData.map(breed => breed.breedName),
       datasets: [{
         data: sortedData.map(breed => {
-          
-          return parseFloat((100 * breed.amountOfImages) / amountOfImages).toFixed(2)
+          return parseFloat((100 * breed.amountOfImages) / amountOfImages).toFixed(2);
         }),
         backgroundColor: colors,
         hoverBackgroundColor: colors
       }]
-    }
+    };
     return <Pie data={pieData}/>
-  }
+  };
 
   return (
     <Loader
@@ -40,7 +40,7 @@ const PieChart = ({data, amountOfImages}) => {
       height={100}
       width={100}
     />
-  )
-}
+  );
+};
 
 export default PieChart;

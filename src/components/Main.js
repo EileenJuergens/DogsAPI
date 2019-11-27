@@ -9,31 +9,28 @@ const Main = ({ dogList, amountOfImages, dispatchGetDogs, dispatchgetAmountOfIma
   useEffect(() => {
     getDogsService()
       .then(response => {
-        const breedNames = Object.keys(response.message)
+        const breedNames = Object.keys(response.message);
         breedNames.forEach(breedName => {
           getDogsImagesService(breedName)
             .then(imagesResponse => {
-              dispatchgetAmountOfImages(imagesResponse.message.length)
-              const data = {breedName, amountOfImages: imagesResponse.message.length}
-              dispatchGetDogs(data)
+              dispatchgetAmountOfImages(imagesResponse.message.length);
+              const data = {breedName, amountOfImages: imagesResponse.message.length};
+              dispatchGetDogs(data);
             })
-            .catch(error => {
-              alert(error);
-            });
+            .catch(error => alert(error));
         });
       })
-      .catch(error => {
-        alert(error);
-      });
+      .catch(error => alert(error));
   },[]);
 
   return (
-    <div>   
-      <h1>The cutes ten breed with more images</h1> 
+    <div >   
+      <h1>The ten breeds with the most uploaded images</h1> 
       <PieChart data={dogList} amountOfImages={amountOfImages} />
-      <p>The number in the hover is the percentage of the total amount of images</p>
+      <br/>
+      <p>The number while hover over a part in the pie chart is the percentage of images that were uploded for this breed measurded on of the total amount of images from all breeds.</p>
     </div>
-  )
+  );
 };
 
 const mapStateToProps = state => ({
