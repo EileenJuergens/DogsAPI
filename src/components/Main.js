@@ -6,7 +6,6 @@ import PieChart from './PieChart';
 
 const Main = ({ dogList, amountOfImages, dispatchGetDogs, dispatchgetAmountOfImages }) => {
 
-  console.log(dogList)
   useEffect(() => {
     getDogsService()
       .then(response => {
