@@ -1,4 +1,4 @@
-# StrandsDogs by Eileen Juergens 🐕‍🦺
+# Dogs API by Eileen Juergens 🐕‍🦺
 
 - [1. Getting started](#1-getting-started)
 - [2. Challenge](#2-challenge)
@@ -28,7 +28,7 @@ To test the functionality of Redux, run `npm test test/actions.test.js` and afte
 ## 4. Comments
 
 ### 4.1. Decisions
-In this challenge I went for the development of the app for React and Redux, because this is not just Strands favourite library or framework, but as well mine.  
+In this challenge I went for the development of the app for React and Redux, because this is not just your favourite library or framework, but as well mine.  
 
 I started with a simple React app and the use of the React Hook useState(), to ensure that the fetch request to the API works correctly. 
 
