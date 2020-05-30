@@ -1,4 +1,4 @@
-# Dogs API by Eileen Juergens 🐕‍🦺
+# Dogs API 🐕‍
 
 - [1. Getting started](#1-getting-started)
 - [2. Challenge](#2-challenge)
